@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is a web based application use to create a friendlier environment for Computer crime reporting and remedy center ">
+
+    <title>antihacksglobaL</title>
+
+
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: rgb(127, 19, 131);
+        }
+       #title{color:rgb(0, 0, 0);
+              background-color:rgb(170, 16, 144) ;
+              font-size: 29px;
+              font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+       }      
+        #searchBar {
+          display: flex;
+          margin: 20px;
+        }
+    
+        #searchInput {
+          flex: 1;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 5px 0 0 5px;
+        }
+    
+        #SwiftButton {
+          background-color: #09880d;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 0 5px 5px 0;
+          cursor: pointer;
+          width: 80px; /* Adjust the width based on your preference */
+        }
+  #chat-container {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#chat-header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+#chat-messages {
+    padding: 10px;
+    height: 200px;
+    overflow-y: scroll;
+    color: aliceblue;
+}
+
+#user-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+#input-text {
+    flex: 1;
+    padding: 5px;
+}
+
+#send-button, #more-info-button {
+    background-color: #076d0b;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+
+.wave {
+    position: relative;
+    display: inline-block;
+    margin: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #fd0505;
+    animation: wave 2s infinite ease-in-out;
+}
+
+@keyframes wave {
+    0%, 24%, 48%, 72%, 100% {
+        transform: translateY(0);
+    }
+    12% {
+        transform: translateY(-10px);
+    }
+    36% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+        hr{background: black;
+          height: 5px ;
+          width: auto;
+          border: dotted black;
+        }
+       
+
+               
+
+    #loading {
+    display: none;
+    margin: 10px 0;
+    text-align: center;
+}
+#footer{height: 45px;
+                width: auto;
+                text-align: center;
+                border: none;
+                padding: 0%;
+                position: relative;
+                color: aliceblue;
+
+}
+
+.container {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .tooltip {
+      position: relative; /* helps position the tooltip content */
+      border-bottom: 1px solid black;
+    }
+    .tooltip-content {
+      color: white;
+      background: black;
+      padding: 3px;
+      border-radius: 5px;
+      border-radius: 5px;
+      opacity: 0; /* fully transparent (hidden) */
+      transition-duration: 1s; /* duration of the fade in effect */
+    
+      /* positions the tooltip content */
+      position: absolute;
+      z-index: 1;
+      text-align: center;
+      width: auto;
+      top: -3px; /* border-width x -1 */
+      left: 105%;
+    }
+    .tooltip:hover > .tooltip-content {
+      opacity: 1; /* fully opaque (fully visible) */
+    }
+    .tooltip > .tooltip-content::after {
+      content: " ";
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      margin-top: -5px;
+      border: 5px solid transparent;
+      border-right-color: black;
+    }
+    #scrollToTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #007BFF;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+      </style>
+      
+    </head>
+    <body>
+      
+        <center>
+        <div id="title"><b>AntiHacksGlobal<sup>&copy;</sup>
+        </div></center></b>
+      <div id="searchBar">
+        <input type="search" id="searchInput" placeholder="Enter your issue here ...">
+        <button id="SwiftButton" onclick="searchRemedy()">Search</button>
+      </div>
+    <br>
+    <center>
+    <button id="reporter1" onclick="reporter1()">REPORT NOW</button>
+    <BUtton id="INSTAGRAM" onclick="INSTAGRAM()">Chat with Us</BUtton>
+    
+    <button id="AIaid" onclick="chatGPT()">More help</button>
+    <button id="emailButton" onclick="sendEmail()">Send Email</button>
+    
+    <br>
+    <hr>
+    <div class="container">
+        <span class="tooltip"> Hover here...
+          <span class="tooltip-content"> Email antihacksglobaL@gmail.com for instant remedy for your issue </span>
+        </span>
+      </div>
+    <hr>
+    <div id="chat-container">
+<div id="chat-header">AntiHacks InLineBot</div>
+<div id="chat-messages"></div>
+<div id="user-input">
+    <input type="text" id="input-text" placeholder="Type something here...">
+    <button id="send-button">Send</button>
+    <p> </p>
+    <button id="more-info-button">More Info</button>
+</div>
+<div id="loading">
+    Typing...
+    <span class="wave"></span><span class="wave"></span><span class="wave"></span>
+</div>
+</div>
+    <center>
+
+  
+      </div>
+  </div>
+</center>
+
+<hr>
+<hr>
+
+
+  <footer id="footer"> <h5>AndThom &copy</h5></footer>
+    
+ 
+    <script type="text/javascript">
+     
+       
+    </script>
+ 
+
+      <script>
+        var mybutton = document.getElementById("scrollToTopBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+};
+
+// When the user clicks on the button, scroll to the top of the document
+function scrollToTop() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+        alert ("Hello user? Welcome to AntiHacks Global. Our able Team is working towards solving your software and hardware related malfunctions");
+        function searchRemedy() {
+          var problem = document.getElementById('searchInput').value;
+          // Redirect to Google Chrome with a search query
+          window.open('https://www.google.com/search?q=' + encodeURIComponent('remedy for ' + problem));
+        }
+        function reporter1(){
+            window.location.href="mailto:antihacksglobal@gmail.com";
+        }
+
+        function INSTAGRAM(){window.location.href="https://www.instagram.com/antihacksglobal";
+
+        }
+        function chatGPT(){
+            window.location.href="https://www.chatgpt.com"
+        }
+        function sendMessage() {
+            const userMessage = document.getElementById('userMessage').value;
+            if (userMessage.trim() !== '') {
+                appendMessage('user', userMessage);
+               
+                setTimeout(() => {
+                    appendMessage('bot', 'Hello! welcome to Antihacks Global. We fix any computer crime at hand. Please use the above commnad buttons to access our services. Thanks for choosing AntiHacks Global.');
+                }, 500);
+                document.getElementById('userMessage').value = '';
+            }
+        }
+
+        function appendMessage(sender, message) {
+            const chatMessages = document.getElementById('chat-messages');
+            const newMessage = document.createElement('div');
+            newMessage.className = sender;
+            newMessage.textContent = message;
+            chatMessages.appendChild(newMessage);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        }
+        function sendEmail() {
+     
+     var emailAddress = 'antihacksglobal@gmail.com';
+
+     
+     var emailSubject = 'Subject';
+
+    
+     var emailBody = 'Body';
+
+    
+     var mailtoLink = 'mailto:' + emailAddress +
+       '?subject=' + encodeURIComponent(emailSubject) +
+       '&body=' + encodeURIComponent(emailBody);
+
+    
+     window.location.href = mailtoLink;
+   }
+      </script>
+      <script>
+      document.getElementById('send-button').addEventListener('click', function () {
+          document.getElementById('loading').style.display = 'block';
+          setTimeout(function () {
+              document.getElementById('loading').style.display = 'none';
+              document.getElementById('chat-messages').innerHTML += '<p>Antihacks AI:Hello! Welcome to AntiHacks  Global. We repaire any of your issues at hand efficintly and more precisely. Prefer using the command buttons above</p>';
+          }, 2000);
+      });
+      
+      document.getElementById('more-info-button').addEventListener('click', function () {
+          document.getElementById('loading').style.display = 'block';
+          setTimeout(function () {
+              document.getElementById('loading').style.display = 'none';
+              var confirmation = confirm('Redirect to ChatGPT?');
+              if (confirmation) {
+                  window.location.href = 'https://www.chatGPT.com'; // Replace with the actual URL for ChatGPT
+              }
+          }, 2000);
+      });
+      </script>
+      </body>
+</html>
